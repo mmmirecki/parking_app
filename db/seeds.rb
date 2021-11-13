@@ -6,5 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Reservation.destroy_all
 ParkingSpot.delete_all
 ParkingSpot.create(number:1)

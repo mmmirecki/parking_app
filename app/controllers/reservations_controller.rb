@@ -1,9 +1,13 @@
 class ReservationsController < ApplicationController
   def create
     @parking_spot = ParkingSpot.find(params[:parking_spot_id])
-
-    if @parking_spot.reservations.last.reservation_is_valid?
-      redirect_to root_path, alert: "This spot is taken"
+    if @parking_spot.reservations.exists?
+      if @parking_spot.reservations.last.reservation_is_valid?
+        redirect_to root_path, alert: "This spot is taken"
+      else
+        @reservation = @parking_spot.reservations.create(reservation_params)
+        redirect_to root_path, alert: "Your reservation has been made #{params[:reservation][:user_name]}"
+      end
     else
       @reservation = @parking_spot.reservations.create(reservation_params)
       redirect_to root_path, alert: "Your reservation has been made #{params[:reservation][:user_name]}"

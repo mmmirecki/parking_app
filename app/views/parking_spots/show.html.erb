@@ -9,18 +9,28 @@
 </p>
 
 <%= @parking_spot.reservations.last.inspect %>
-
-<% if @parking_spot.reservations.last.reservation_is_valid?%>
-  <%= link_to "Cancel reservation", parking_spot_reservation_path(@parking_spot),
-    method: :delete%> 
-<% else %>
+  <% if @parking_spot.reservations.exists? %>
+    <% if @parking_spot.reservations.last.reservation_is_valid?%>
+    <%= link_to "Cancel reservation", parking_spot_reservation_path(@parking_spot),
+        method: :delete%> 
+    <% else %>
+        <%= form_with model: [@parking_spot, @parking_spot.reservations.build] do |f| %>
+            <%= f.hidden_field :user_name, value: "test" %>
+            <%= f.hidden_field :time_booked, value: Time.now %>
+            <%= f.hidden_field :reserved, value: "True" %>
+        <%= f.submit %>
+        <% end %>
+    <% end %>
+  <% else %>
     <%= form_with model: [@parking_spot, @parking_spot.reservations.build] do |f| %>
         <%= f.hidden_field :user_name, value: "test" %>
         <%= f.hidden_field :time_booked, value: Time.now %>
         <%= f.hidden_field :reserved, value: "True" %>
-    <%= f.submit %>
+        <%= f.submit %>
     <% end %>
-<% end %>
+  
+  <% end %>
+  
 
 
 
