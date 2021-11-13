@@ -1,0 +1,2 @@
+module SlackReservationsHelper
+end
