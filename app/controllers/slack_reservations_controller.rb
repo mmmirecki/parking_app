@@ -7,12 +7,12 @@ class SlackReservationsController < ApplicationController
       if @parking_spot.reservations.last.reservation_is_valid?
         @response_message = "This spot is taken"
       else
-        @reservation = @parking_spot.reservations.create(reservation_params)
+        @reservation = @parking_spot.reservations.create(user_name:params[:user_name])
         @response_message = "Your reservation has been made"
       end
     else
       @response_message = "Your reservation has been made"
-      @reservation = @parking_spot.reservations.create(reservation_params)
+      @reservation = @parking_spot.reservations.create(user_name:params[:user_name])
     end
 
     render json: {
