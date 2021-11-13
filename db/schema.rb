@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_123835) do
+ActiveRecord::Schema.define(version: 2021_11_13_130611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "add_valid_to_reservations", force: :cascade do |t|
+    t.boolean "valid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "parking_spots", force: :cascade do |t|
     t.integer "number"
@@ -27,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_123835) do
     t.bigint "parking_spot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "reserved"
     t.index ["parking_spot_id"], name: "index_reservations_on_parking_spot_id"
   end
 
