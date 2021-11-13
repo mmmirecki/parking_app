@@ -1,0 +1,9 @@
+<h1>This is spots#index</h1>
+<% @parking_spots.each do |parking_spot| %>
+  <%= alert %>
+  <%= link_to parking_spot do %>
+    <div class='parking-spot'>
+        <%= parking_spot.number %>
+    </div>
+  <% end %>
+<% end %>
