@@ -2,13 +2,10 @@
 
 <h3>History</h3>
 <p>
-  <% @parking_spot.reservations.each do |reservation| %>
-    <%= reservation.inspect %>
-  <% end %>
-
+<%= params %>
 </p>
 
-<%= @parking_spot.reservations.last.inspect %>
+<%#= @parking_spot.reservations.last.inspect %>
   <% if @parking_spot.reservations.exists? %>
     <% if @parking_spot.reservations.last.reservation_is_valid?%>
     <%= link_to "Cancel reservation", parking_spot_reservation_path(@parking_spot),
