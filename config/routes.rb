@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "parking_spots#index"
   #Slack routes
-  post "/create", to:  "slack_reservations#create"
+  post "/book_slack", to:  "slack_reservations#create"
   # Resesrvation routes
   resources :parking_spots do
     resources :reservations
