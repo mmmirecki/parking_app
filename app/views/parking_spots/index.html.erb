@@ -5,7 +5,8 @@
   <%= alert %>
   <%= link_to parking_spot do %>
     <div class='parking-spot'>
-        <%= parking_spot.number %>
+      <p><%= parking_spot.number %></p>
+      <p><%= parking_spot.reservations.last.reservation_is_valid? ? "free" : "taken"%></p>
     </div>
   <% end %>
 <% end %>
