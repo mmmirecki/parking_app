@@ -4,7 +4,7 @@ class SlackReservationsController < ApplicationController
   def create
     @response_message = "Something went wrong"
     @parking_spot = ParkingSpot.first
-    if params.text
+    if params[:text]
       if @parking_spot.reservations.exists?
         if @parking_spot.reservations.last.reservation_is_valid?
           @response_message = "This spot is taken"
