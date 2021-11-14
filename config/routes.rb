@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #Slack routes
   post "/book_slack", to: "slack_reservations#create"
   # Resesrvation routes
+  #get "/history", to: "reservations#index"
   resources :parking_spots do
     resources :reservations
   end

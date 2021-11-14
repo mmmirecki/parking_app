@@ -2,7 +2,7 @@ class SlackReservationsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def create
-    @response_message = "Something went wrong"
+    @response_message = "Try other command"
     @parking_spot = ParkingSpot.first
     if params[:text] == "book"
       if @parking_spot.reservations.exists?

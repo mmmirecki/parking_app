@@ -2,7 +2,10 @@
 
 <h3>History</h3>
 <p>
-<%= params %>
+<%= link_to parking_spot_reservations_path(params[:id]) do %>
+  <button>Show History</button>
+<% end %>
+
 </p>
 
 <%#= @parking_spot.reservations.last.inspect %>

@@ -1,0 +1,7 @@
+<h1>History</h1>
+<% @parking_spot.reservations.each do |r| %>
+    <p><%= r.user_name %></p>
+    <p><%= r.time_booked %></p>
+    <p> <%= r.reservation_is_valid? ? "Valid" : "Invalid" %></p>
+    <br>
+<% end %>

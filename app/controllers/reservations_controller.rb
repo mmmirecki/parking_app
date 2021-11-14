@@ -1,4 +1,8 @@
 class ReservationsController < ApplicationController
+  def index
+    @parking_spot = ParkingSpot.find(params[:parking_spot_id])
+  end
+  
   def create
     @parking_spot = ParkingSpot.find(params[:parking_spot_id])
     if @parking_spot.reservations.exists?
