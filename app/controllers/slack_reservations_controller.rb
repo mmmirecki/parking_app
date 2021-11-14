@@ -20,11 +20,13 @@ class SlackReservationsController < ApplicationController
       if @parking_spot.reservations.exists?
         if @parking_spot.reservations.last.user_name == params[:user_name]
           @parking_spot.reservations.last.update(reserved: false)
+          @response_message = "Succesfully canceled"
+        else
+          @response_message = "You don't have a reservation"
         end
       else
         @response_message = "You don't have a reservation"
       end
-      @response_message = "succesfuly cancelled"
     end
 
     render json: {
