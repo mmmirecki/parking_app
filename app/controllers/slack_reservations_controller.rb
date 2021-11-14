@@ -4,7 +4,7 @@ class SlackReservationsController < ApplicationController
   def create
     @response_message = "Something went wrong"
     @parking_spot = ParkingSpot.first
-    if params[:text]
+    if params[:text] == "book"
       if @parking_spot.reservations.exists?
         if @parking_spot.reservations.last.reservation_is_valid?
           @response_message = "This spot is taken"
@@ -16,7 +16,14 @@ class SlackReservationsController < ApplicationController
         @response_message = "Your reservation has been made"
         @reservation = @parking_spot.reservations.create(user_name:params[:user_name],time_booked:Time.now,reserved:true)
       end
-    else
+    elsif params["text"] == "cancel"
+      if @parking_spot.reservations.exists?
+        if @parking_spot.reservations.last.user_name == params[:user_name]
+          @parking_spot.reservations.last.update(reserved: false)
+        end
+      else
+        @response_message = "You don't have a reservation"
+      end
       @response_message = "succesfuly cancelled"
     end
 
