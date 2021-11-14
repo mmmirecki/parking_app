@@ -1,7 +1,7 @@
 class SlackReservationsController < ApplicationController
   protect_from_forgery with: :null_session
   def index
-    :create
+    redirect_to "/book_slack/create", method: :post
   end
 
   def create
