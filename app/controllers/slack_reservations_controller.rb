@@ -1,5 +1,9 @@
 class SlackReservationsController < ApplicationController
   protect_from_forgery with: :null_session
+  def index
+    :create
+  end
+
   def create
     @response_message = "Something went wrong"
     @parking_spot = ParkingSpot.first
