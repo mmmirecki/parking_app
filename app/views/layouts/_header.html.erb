@@ -1,0 +1,9 @@
+<header>
+  <h1>Hello <%= logged_in? ? current_user.username : "" %></h1>
+  <% if logged_in? %>
+    <%= link_to "logout", "/logout" , method: :delete%>
+  <% else %>
+    <%= link_to "signup","/signup" %>
+    <%= link_to "login","/login" %>
+  <%end%>
+</header>

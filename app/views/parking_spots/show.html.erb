@@ -15,7 +15,7 @@
         method: :delete%> 
     <% else %>
         <%= form_with model: [@parking_spot, @parking_spot.reservations.build] do |f| %>
-            <%= f.hidden_field :user_name, value: "test" %>
+            <%= f.hidden_field :user_name, value: logged_in? ? current_user.username : "anonymous" %>
             <%= f.hidden_field :time_booked, value: Time.now %>
             <%= f.hidden_field :reserved, value: "True" %>
         <%= f.submit %>
@@ -23,8 +23,8 @@
     <% end %>
   <% else %>
     <%= form_with model: [@parking_spot, @parking_spot.reservations.build] do |f| %>
-        <%= f.hidden_field :user_name, value: "test" %>
-        <%= f.hidden_field :time_booked, value: Time.now %>
+        <%#= f.hidden_field :user_name, value: logged_in? ? current_user.username : "anonymous" %>
+        <%#= f.hidden_field :time_booked, value: Time.now %>
         <%= f.hidden_field :reserved, value: "True" %>
         <%= f.submit %>
     <% end %>
