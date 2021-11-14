@@ -1,4 +1,5 @@
-<h1>This is parking#show number <%= @parking_spot.number %></h1>
+<section class="show-parking-spots-container">
+<h1>This is parking spot number <%= @parking_spot.number %></h1>
 
 <h3>History</h3>
 <p>
@@ -8,17 +9,20 @@
 
 </p>
 
-<%#= @parking_spot.reservations.last.inspect %>
+<%#---------Cancel or create--------%>
   <% if @parking_spot.reservations.exists? %>
     <% if @parking_spot.reservations.last.reservation_is_valid?%>
-      <%= link_to "Cancel reservation", parking_spot_reservation_path(@parking_spot),
-        method: :delete%> 
+      <%= link_to parking_spot_reservation_path(@parking_spot),
+        method: :delete do %>
+        <button class='cancel-button'>Cancel Resevation</button>
+      <% end %>
+      <br>
     <% else %>
         <%= form_with model: [@parking_spot, @parking_spot.reservations.build] do |f| %>
             <%= f.hidden_field :user_name, value: logged_in? ? current_user.username : "anonymous" %>
             <%= f.hidden_field :time_booked, value: Time.now %>
             <%= f.hidden_field :reserved, value: "True" %>
-        <%= f.submit %>
+        <%= f.submit 'Create reservation',:class => 'create-button'%>
         <% end %>
     <% end %>
   <% else %>
@@ -26,11 +30,10 @@
         <%#= f.hidden_field :user_name, value: logged_in? ? current_user.username : "anonymous" %>
         <%#= f.hidden_field :time_booked, value: Time.now %>
         <%= f.hidden_field :reserved, value: "True" %>
-        <%= f.submit %>
+        <%= f.submit 'Create reservation',:class => 'create-button'%>
     <% end %>
   
   <% end %>
-  
 <%= link_to root_path do%>
   <button>Go back</button>
 <% end %>

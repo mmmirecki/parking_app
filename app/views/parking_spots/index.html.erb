@@ -1,12 +1,11 @@
-<h1>This is spots#index</h1>
-<%# Login/Signup Buttons %>
 
-<% @parking_spots.each do |parking_spot| %>
-  <%= alert %>
-  <%= link_to parking_spot do %>
-    <div class='parking-spot'>
-      <p><%= parking_spot.number %></p>
-      <p><%= parking_spot.reservations.last.reservation_is_valid? ? "free" : "taken"%></p>
-    </div>
+<section class="parking-spots-container">
+  <% @parking_spots.each do |parking_spot| %>
+    <%= alert %>
+    <%= link_to parking_spot do %>
+      <div class="parking-spot <%= parking_spot.reservations.last.reservation_is_valid? ? "taken" : "free"%>">
+        <p><%= parking_spot.number %></p>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</section>

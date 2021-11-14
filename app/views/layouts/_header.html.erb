@@ -3,7 +3,9 @@
   <% if logged_in? %>
     <%= link_to "logout", "/logout" , method: :delete%>
   <% else %>
-    <%= link_to "signup","/signup" %>
-    <%= link_to "login","/login" %>
+    <div class="login-container">
+      <%= link_to "signup","/signup" %>
+      <%= link_to "login","/login" %>
+    </div>
   <%end%>
 </header>
