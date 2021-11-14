@@ -1,4 +1,13 @@
 <h1>This is spots#index</h1>
+<%# Login/Signup Buttons %>
+<% if logged_in? %>
+  <%= link_to "logout", "/logout" , method: :delete%>
+  <h1>Hello <%= current_user.username%></h1>
+<% else %>
+  <%= link_to "signup","/signup" %>
+  <%= link_to "login","/login" %>
+<% end %>
+
 <% @parking_spots.each do |parking_spot| %>
   <%= alert %>
   <%= link_to parking_spot do %>
