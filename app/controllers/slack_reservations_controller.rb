@@ -28,6 +28,14 @@ class SlackReservationsController < ApplicationController
       else
         @response_message = "You don't have a reservation"
       end
+    elsif params["text"] == "who"
+      if @parking_spot.reservations.exists?
+        if @parking_spot.reservations.last.reservation_is_valid?
+          @response_message = "This spot is booked by #{@parking_spot.reservations.last.user_name}"
+        else
+          @response_message = "There is no reservation"
+        end
+      end
     end
 
     render json: {
