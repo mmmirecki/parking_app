@@ -3,6 +3,7 @@
 one:
   user_name: MyString
   time_booked: 2021-11-13
+  reserved: true
   parking_spot: one
 
 two:

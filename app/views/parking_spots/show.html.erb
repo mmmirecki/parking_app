@@ -1,7 +1,7 @@
 <section class="show-parking-spots-container">
 <h1>This is parking spot number <%= @parking_spot.number %></h1>
 
-<h3>History</h3>
+
 <p>
 <%= link_to parking_spot_reservations_path(params[:id]) do %>
   <button>Show History</button>
@@ -38,5 +38,5 @@
   <button>Go back</button>
 <% end %>
 
-
+</section>
 

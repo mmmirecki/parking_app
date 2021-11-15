@@ -80,11 +80,8 @@ main{
     }
 }
 .show-parking-spots-container{
-    min-height: 200px;
+    min-height: 500px;
     margin:20px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
     .create-button{
         background-color: green;
     }

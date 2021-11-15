@@ -1,11 +1,11 @@
 <header>
   <h1>Hello <%= logged_in? ? current_user.username : "" %></h1>
+  <div class="login-container">
   <% if logged_in? %>
     <%= link_to "logout", "/logout" , method: :delete%>
   <% else %>
-    <div class="login-container">
-      <%= link_to "signup","/signup" %>
-      <%= link_to "login","/login" %>
-    </div>
+    <%= link_to "signup","/signup" %>
+    <%= link_to "login","/login" %>
   <%end%>
+  </div>
 </header>

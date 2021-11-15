@@ -20,7 +20,7 @@ class SlackReservationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should response with error' do
-    post '/book_slack', params: {  }
+    post '/book_slack', params: {}
     json_response = JSON.parse(response.body)
     assert_equal 'Try other command', json_response['text']
   end
