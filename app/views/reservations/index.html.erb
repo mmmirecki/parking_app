@@ -1,4 +1,7 @@
 <h1>History</h1>
+<%= link_to root_path do%>
+  <button>Go back</button>
+<% end %>
 <% @parking_spot.reservations.each do |r| %>
     <p>Username: <%= r.user_name %></p>
     <p>Time Booked: <%= r.time_booked %></p>
